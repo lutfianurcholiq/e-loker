@@ -11,6 +11,10 @@ class Apply extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'tgl_apply' => 'datetime'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

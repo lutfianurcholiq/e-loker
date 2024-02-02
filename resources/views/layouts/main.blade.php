@@ -40,6 +40,11 @@
         </div>
     </div>  --}}
 
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+{{-- select2 --}}
+<script src="{{ asset('assets/image/js/main.js') }}"></script>
+
 <script src="{{ asset('mazer/assets/js/bootstrap.js') }}"></script>
 <script src="{{ asset('mazer/assets/js/app.js') }}"></script>
 
@@ -49,18 +54,9 @@
 
 {{-- Font awesome --}}
 <link rel="stylesheet" href="{{ asset('mazer/assets/extensions/@fortawesome/fontawesome-free/css/all.min.css') }}">
-    
-<!-- Need: Apexcharts -->
-{{-- <script src="{{ asset('mazer/assets/extensions/apexcharts/apexcharts.min.js') }}"></script> --}}
+
 <script src="{{ asset('mazer/assets/js/pages/dashboard.js') }}"></script>
 
-{{-- Select --}}
-{{-- <script src="{{ asset('mazer/assets/extensions/choices.js/public/assets/scripts/choices.js') }}"></script> --}}
-{{-- <script src="{{ asset('mazer/assets/js/pages/form-element-select.js') }}"></script> --}}
-
-{{-- ChartJS --}}
-{{-- <script src="{{ asset('mazer/assets/extensions/chart.js/Chart.min.js') }}"></script> --}}
-{{-- <script src="{{ asset('mazer/assets/js/pages/ui-chartjs.js') }}"></script> --}}
 
 </body>
 

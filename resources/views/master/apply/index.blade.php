@@ -46,7 +46,7 @@
                                 <tr class="text-capitalize">
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $ap->nama_perusahaan }}</td>
-                                    <td>{{ $ap->tgl_apply }}</td>
+                                    <td>{{ $ap->tgl_apply->format('d/m/Y') }}</td>
                                     <td>{{ $ap->media_apply }}</td>
     
                                     @if ($ap->status_apply == 'ditolak')
@@ -62,13 +62,14 @@
                                     @endif
                                     <td>
                                         @if ($ap->status_apply == 'diterima' )
-                                            <button class="btn btn-success"><i class="fas fa-check"></i></button>
+                                        <button class="btn btn-success"><i class="fas fa-check"></i></button>
                                         @elseif($ap->status_apply == 'ditolak')
                                             <button class="btn btn-danger"><i class="fas fa-times"></i></button>
                                         @else
                                             <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-edit-status{{ $ap->id }}"><i class="fas fa-edit"></i></a>
-
+                                            
                                         @endif
+                                        <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-hapus{{ $ap->id }}"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endif
@@ -129,6 +130,29 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Modal Hapuus -->
+                    <div class="modal fade" id="modal-hapus{{ $ap->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5">Konfirmasi</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Anda yakin ingin menghapus lamaran {{ $ap->nama_perusahaan }}? </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                                    <form action="/apply/{{ $ap->id }}" method="POST">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit" class="btn btn-primary">Ya</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     @endforeach
 
                     {{-- Modal Tambah --}}
@@ -162,8 +186,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="" class="mb-2">Media Apply</label>
-                                            <select name="media_apply" id="media_apply" class="form-control @error('media_apply') is-invalid @enderror">
-                                                <option value="">Pilih Media Apply</option>
+                                            <select name="media_apply" id="media_apply" class="select2 form-control @error('media_apply') is-invalid @enderror" data-placeholder="Pilih Media Apply">
+                                                <option value="">Pilih Media</option>
                                                 @if (old('media_apply') == 'glints')
                                                 <option value="glints" selected>Glints</option>
                                                 <option value="linkedin">Linkedin</option>
@@ -204,7 +228,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="" class="mb-2">Status Apply</label>
-                                            <select name="status_apply" id="status_apply" class="form-control @error('status_apply') is-invalid @enderror">
+                                            <select name="status_apply" id="status_apply" class="select2 form-control @error('status_apply') is-invalid @enderror" data-placeholder="Pilih Status">
                                                 <option value="">Pilih Status</option>
                                                 @if (old('status_apply') == 'baru apply')
                                                 <option value="baru apply" selected>Baru Apply</option>
