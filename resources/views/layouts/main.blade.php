@@ -1,67 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
+@include('layouts.header')
 
-@include('layouts.head')
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
 
-<body>
-
-    <div id="app">
+        <!-- Menu -->
         @include('layouts.sidebar')
-        <div id="main">
-            <header class="mb-3">
-                <a href="#" class="burger-btn d-block d-xl-none">
-                    <i class="bi bi-justify fs-3"></i>
-                </a>
-            </header>
-        
-            <div class="page-content">
-                <div class="page-heading">
-                    @yield('container')
-                </div>
-                @include('layouts.footer')
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+          @include('layouts.navbar')
+
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+              @yield('container')
             </div>
+            <!-- / Content -->
+
+            {{-- Footer --}}
+            @include('layouts.footer')
+            {{-- End Footer --}}
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
         </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
     </div>
+    <!-- / Layout wrapper -->
 
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="{{asset('template/assets/vendor/libs/jquery/jquery.js')}}"></script>
+    <script src="{{asset('template/assets/vendor/libs/popper/popper.js')}}"></script>
+    <script src="{{asset('template/assets/vendor/js/bootstrap.js')}}"></script>
+    <script src="{{asset('template/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
 
-    {{-- <div id="app">
-        @include('layouts.sidebar')
-        <div id="main">
-            <header class='mb-3'>
-                <a href="#" class="burger-btn d-block d-xl-none">
-                    <i class="bi bi-justify fs-3"></i>
-                </a>
-            </header>
-            <div id="main-content">
-                @yield('container')
-                <div class="page-heading">
-                </div>
-            </div>
-        </div>
-    </div>  --}}
+    <script src="{{asset('template/assets/vendor/js/menu.js')}}"></script>
+    <!-- endbuild -->
 
-<script src="{{ asset('mazer/assets/js/bootstrap.js') }}"></script>
-<script src="{{ asset('mazer/assets/js/app.js') }}"></script>
-
-{{-- DataTable --}}
-<script src="{{ asset('mazer/assets/extensions/simple-datatables/umd/simple-datatables.js') }}"></script>
-<script src="{{ asset('mazer/assets/js/pages/simple-datatables.js') }}"></script>
-
-{{-- Font awesome --}}
-<link rel="stylesheet" href="{{ asset('mazer/assets/extensions/@fortawesome/fontawesome-free/css/all.min.css') }}">
+    <!-- Vendors JS -->
+    {{-- <script src="{{asset('template/assets/vendor/libs/apex-charts/apexcharts.js')}}"></script> --}}
     
-<!-- Need: Apexcharts -->
-{{-- <script src="{{ asset('mazer/assets/extensions/apexcharts/apexcharts.min.js') }}"></script> --}}
-<script src="{{ asset('mazer/assets/js/pages/dashboard.js') }}"></script>
+    {{-- Select2 Bootstrap 5 --}}
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-{{-- Select --}}
-{{-- <script src="{{ asset('mazer/assets/extensions/choices.js/public/assets/scripts/choices.js') }}"></script> --}}
-{{-- <script src="{{ asset('mazer/assets/js/pages/form-element-select.js') }}"></script> --}}
+    {{-- Datatables --}}
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> 
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.js"></script> 
+    <script src="{{ asset('template/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js')}}"></script>
 
-{{-- ChartJS --}}
-{{-- <script src="{{ asset('mazer/assets/extensions/chart.js/Chart.min.js') }}"></script> --}}
-{{-- <script src="{{ asset('mazer/assets/js/pages/ui-chartjs.js') }}"></script> --}}
+    <!-- Main JS -->
+    <script src="{{asset('template/assets/js/main.js')}}"></script>
 
-</body>
 
+    <!-- Page JS -->
+    <script src="{{asset('template/assets/js/dashboards-analytics.js')}}"></script>
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </body>
 </html>

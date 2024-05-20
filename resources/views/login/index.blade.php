@@ -1,64 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
-@include('layouts.head')
+<html
+  lang="en"
+  class="light-style customizer-hide"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free"
+>
+{{-- head --}}
+@include('layouts.header')
+{{-- end head --}}
 
-<body>
-    <div id="auth">
-        
-        <div class="row h-100">
-            <div class="col-lg-5 col-12">
-                <div id="auth-left">
-                    <div class="auth-logo">
-                        <img src="{{ asset('assets/image/logo/logo e-loker.png') }}" alt="Logo" class="img-logo">
-                    </div>
-                    @if (session()->has('success'))
+  <body>
+    <!-- Content -->
+
+    <div class="container-xxl">
+      <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner">
+          <!-- Register -->
+          <div class="card">
+            <div class="card-body">
+              <!-- Logo -->
+              <div class="app-brand justify-content-center">
+                <a href="index.html" class="app-brand-link gap-2">
+                  <span class="app-brand-text demo text-body fw-bolder"><img src="{{ asset('assets/image/logo/logo e-catlok.png')}}" alt="Logo e-catlok" width="200px"></span>
+                </a>
+              </div>
+              <!-- /Logo -->
+                @if (session()->has('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>{{ session('success') }}</strong>
+                        <strong class="text-center">{{ session('success') }}</strong>
                     </div>
-                    
-                    @endif
-                    <h5 class="auth-title mb-3">Log in.</h5>
-                    {{-- <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p> --}}
-
-                    <form method="post" action="/login">
-                        @csrf
-                        <div class="form-group position-relative mb-4">
-                            <input type="text" id="username" name="username" class="form-control @error('username') is-invalid @enderror form-control-xl" placeholder="Username" value="{{ old('username') }}">
-                            @error('username')
+                @endif
+                <form id="formAuthentication" class="mb-3" action="/login" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" name="username" id="username" class="form-control @error('username') is-invalid @enderror" placeholder="Masukkan Username" autofocus value="{{ old('username') }}">
+                        @error('username')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
-                            @enderror
+                        @enderror
+                    </div>
+                    <div class="mb-3 form-password-toggle">
+                        <div class="d-flex justify-content-between">
+                            <label for="password" class="form-label">Password</label>
                         </div>
-                        <div class="form-group position-relative mb-4">
-                            <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror form-control-xl" placeholder="Password">
+                        <div class="input-group input-group-merge">
+                            <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukkan Password"
+                            aria-describedby="password">
+                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                             @error('password')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
                             @enderror
                         </div>
-                        {{-- <div class="form-check form-check-lg d-flex align-items-end">
-                            <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label text-gray-600" for="flexCheckDefault">
-                                Keep me logged in
-                            </label>
-                        </div> --}}
-                        <button class="btn btn-primary btn-block btn-lg shadow-lg mt-1" type="submit">Log in</button>
-                    </form>
-                    <div class="text-center mt-4 text-md fs-5" style="margin-bottom: 0.6em;">
-                        <p class="text-gray-600">Belum Punya Akun? <a href="/registrasi" class="font-bold">Daftar Disini</a>.</p>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-7 d-none d-lg-block">
-                <div id="auth-right">
+                    <div class="mb-3 mt-4">
+                        <button class="btn btn-primary d-grid w-100" type="submit">Log In</button>
+                    </div>
+                </form>
 
-                </div>
+              <p class="text-center">
+                <span>Tidak Punya Akun?</span>
+                <a href="/registrasi">
+                  <span>Daftar Disini</span>
+                </a>
+              </p>
             </div>
+          </div>
+          <!-- /Register -->
         </div>
-
+      </div>
     </div>
-</body>
 
+    <!-- / Content -->
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="{{ asset('template/assets/vendor/libs/jquery/jquery.js')}}.."></script>
+    <script src="{{ asset('template/assets/vendor/libs/popper/popper.js')}}"></script>
+    <script src="{{ asset('template/assets/vendor/js/bootstrap.js')}}"></script>
+    <script src="{{ asset('template/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
+
+    <script src="{{ asset('template/assets/vendor/js/menu.js')}}"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+    <script src="{{ asset('template/assets/js/main.js')}}"></script>
+
+    <!-- Page JS -->
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </body>
 </html>

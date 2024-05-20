@@ -11,7 +11,9 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('login.index');
+        return view('login.index', [
+            'title' => 'Log In'
+        ]);
     }
 
     public function authenticate(Request $request): RedirectResponse
@@ -20,7 +22,7 @@ class LoginController extends Controller
 
         $credentials = $request->validate([
             'username' => 'required|max:255',
-            'password' => 'required|min:8|max:20'
+            'password' => 'required|min:8|max:15'
         ]);
  
         if (Auth::attempt($credentials)) {

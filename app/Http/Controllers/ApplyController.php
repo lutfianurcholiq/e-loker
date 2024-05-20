@@ -33,7 +33,9 @@ class ApplyController extends Controller
      */
     public function create()
     {
-        //
+        return view('master.apply.create', [
+            'title' => 'Tambah Data Apply'
+        ]);
     }
 
     /**
@@ -67,7 +69,7 @@ class ApplyController extends Controller
             'user_id' => auth()->user()->id
         ]);
 
-        return redirect('/apply')->with('success', 'Apply Success Add');
+        return redirect('/apply')->with('success', 'Data Apply Berhasil di Tambahkan');
     }
 
     /**
@@ -107,7 +109,7 @@ class ApplyController extends Controller
 
         Apply::where('id', $apply->id)->update($validate);
 
-        return redirect('/apply')->with('success','Apply has been updated');
+        return redirect('/apply')->with('success','Status Berhasil di Update');
     }
 
     /**

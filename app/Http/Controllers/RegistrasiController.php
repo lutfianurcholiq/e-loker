@@ -9,7 +9,9 @@ class RegistrasiController extends Controller
 {
     public function index()
     {
-        return view('register.index');
+        return view('register.index', [
+            'title' => 'Registrasi'
+        ]);
     }
 
     public function store(Request $request)
@@ -20,8 +22,8 @@ class RegistrasiController extends Controller
             'gender' => 'required',
             'email' => 'required|email:dns|unique:users',
             'role' => 'max:255',
-            'password' => 'required|min:8|max:20',
-            'confirm_password' => 'required|min:8|max:20|required_with:password|same:password'
+            'password' => 'required|min:8|max:15',
+            'confirm_password' => 'required|min:8|max:15|required_with:password|same:password'
         ]);
 
         // return $request;
@@ -31,7 +33,7 @@ class RegistrasiController extends Controller
 
         User::create($validated);
 
-        return redirect('/login')->with('success','Registration Success');
+        return redirect('/login')->with('success','Registrasi Berhasil');
 
     }
 }

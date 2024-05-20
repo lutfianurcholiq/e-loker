@@ -1,13 +1,7 @@
-<footer>
-    <div class="fixed-bottom d-flex justify-content-center">
-        <div class="footer clearfix mb-0 text-muted">
-            <div class="float-start">
-                <p><script>document.writeln(new Date().getFullYear());</script> &copy; Mazer</p>
-            </div>
-            <div class="float-end">
-                <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                        href="https://saugi.me">Saugi</a></p>
-            </div>
-        </div>
+<footer class="content-footer footer bg-footer-theme">
+    <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+      <div class="mb-2 mb-md-0">©<script>document.write(new Date().getFullYear());</script>, made with ❤️ by
+        <a href="https://github.com/themeselection/sneat-bootstrap-html-laravel-admin-template-free" target="_blank" class="footer-link fw-bolder">Theme Selection</a>
+      </div>
     </div>
-</footer>
+  </footer>

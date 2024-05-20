@@ -32,7 +32,7 @@ class ProfileController extends Controller
                 $validate['password'] = bcrypt($validate['password']);
                 User::where('id', auth()->user()->id)->update($validate);
 
-                return redirect('/profile')->with('success', 'Profile Has Been Updated');
+                return redirect('/profile')->with('success', 'Akun Berhasil di Update');
 
             }else{
 
@@ -44,7 +44,7 @@ class ProfileController extends Controller
 
                 User::where('id', auth()->user()->id)->update($validate);
 
-                return redirect('/profile')->with('success', 'Profile Has Been Updated');
+                return redirect('/profile')->with('success', 'Akun Berhasil di Update');
             }
         }else{
 
@@ -60,7 +60,7 @@ class ProfileController extends Controller
                 $validate['password'] = bcrypt($validate['password']);
                 User::where('id', auth()->user()->id)->update($validate);
 
-                return redirect('/profile')->with('success', 'Profile Has Been Updated');
+                return redirect('/profile')->with('success', 'Akun Berhasil di Update');
 
             }else{
 
@@ -71,7 +71,7 @@ class ProfileController extends Controller
 
                 User::where('id', auth()->user()->id)->update($validate);
 
-                return redirect('/profile')->with('success', 'Profile Has Been Updated');
+                return redirect('/profile')->with('success', 'Akun Berhasil di Update');
                 
             }
         }
